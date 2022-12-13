@@ -3,7 +3,7 @@
 #include <random> 
 using namespace std;
 
-int aleatorio();
+int random();
 
 int main()
 {
@@ -12,7 +12,7 @@ int main()
 	cout << "preenchendo cada elemento do vetor\n";
 	int mega[6];
 	for(int i = 0; i < 6; i++)
-		mega[i] = aleatorio();
+		mega[i] = random();
 	cout << endl;
 
 	cout << "preenchendo cada elemento do vetor02\n";
@@ -21,13 +21,13 @@ int main()
 	{
 		for(int j = 0; j < 6; j++)
 		{
-			if(vet[i] == aleatorio())
+			if(vet[i] == random())
 			{
 				break;
 			}
 			else
 			{
-				vet[i] = aleatorio();
+				vet[i] = random();
 			}
 		}
 	}
@@ -48,7 +48,7 @@ int main()
 	return 0;
 }
 
-int aleatorio()
+int random()
 {
 	random_device rd;
 	mt19937 mt(rd());

@@ -3,26 +3,45 @@
 #include <random> 
 using namespace std;
 
-int aleatorio();
+const int TamVet = 6;
+int random();
 
 int main()
 {
 	cout << "preenchendo cada elemento do vetor\n";
-	int vet[6] = {};
-	for(int i = 0; i < 6; i++)
+
+	int vet[TamVet] = {};
+	int num = random();
+	int i = 0;
+
+	while(i < TamVet)
 	{
-		int num = aleatorio();
-		for(int j = 0; j < 6; j++)
+		if(vet[i] == num)
 		{
-			if(vet[i] == num)
-			{
-				break;
-			}
-			else
-			{
-				vet[i] = num;
-				break;
-			}
+			num = random();
+			i = 0;
+			continue;
+		}
+		else if(vet[i] == 0)
+		{
+			vet[i] = num;
+			i = 0;
+			num = random();
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	int aux = 0;
+	for(int i = 0; i < TamVet; i++)
+	{
+		if(vet[i] < vet[i + 1])
+		{
+			aux = vet[i];
+			vet[i] = vet[i + 1];
+			vet[i + 1] = aux;
 		}
 	}
 
@@ -37,10 +56,10 @@ int main()
 	return 0;
 }
 
-int aleatorio()
+int random()
 {
 	random_device rd;
 	mt19937 mt(rd());
-	uniform_int_distribution<int> dist(1, 6);
+	uniform_int_distribution<int> dist(1, 60);
 	return dist(mt);
 }
