@@ -1,52 +1,47 @@
 #include <iomanip>
-#include <vector>
 #include <iostream> 
 #include <random> 
-#include <algorithm> 
 using namespace std;
 
 const int tam = 6;
 int random();
-void gerarSorteio(vector<int> &sorteio);
-void gerarJogo(vector<int> &jogo);
-void exibir(vector<int> &jogo);
+void gerarSorteio(int[], int);
+void gerarJogo(int[], int);
+void BubbleSort(int[], int);
+void exibir(int[], int);
 
 int main()
 {
 	// Criação dos vetores "jogo" e "acertos" para armazenar os jogos
-	//int jogo[TamVet] = {};
-	//int sorteio[TamVet] = {};
-	//int acerto[TamVet] = {};
-
-	vector<int> jogo;
-	vector<int> sorteio;
-	vector<int> acerto;
+	int jogo[tam] = {};
+	int sorteio[tam] = {};
+	int acerto[tam] = {};
 
 	// Bloco de resposta para criação do jogo
 	cout << "Digite [1] para gerar um jogo manual:\n"
-		 << "Digite [2] para gerar um jogo automático:\n\n";
+		<< "Digite [2] para gerar um jogo automático:\n\n";
 	cout << "Digite sua resposta: ";
 	int resposta;
 	cin >> resposta;
 	if(resposta == 1)
 	{
-		gerarJogo(jogo);
+		gerarJogo(jogo, tam);
 	}
 	else if(resposta == 2)
 	{
-		gerarSorteio(jogo);
+		gerarSorteio(jogo, tam);
 	}
 
 	// Mostrando o jogo criado
 	cout << "\nO jogo escolhido foi:\n";
-	exibir(jogo);
+	exibir(jogo, tam);
 
-	// Bloco para geração do gerarSorteio 
+	// Bloco para geração do Sorteio 
 	cout << "\n\nIniciando o sorteio...\n\n";
 	int dezenas = 0;
 	while(true)
 	{
-		gerarSorteio(sorteio);
+		gerarSorteio(sorteio, tam);
 		for(int i = 0; i < tam; i++)
 		{
 			if(jogo[i] == sorteio[i])
@@ -72,21 +67,21 @@ int random()
 	return dist(mt);
 }
 
-void gerarSorteio(vector<int> &sorteio)
+void gerarSorteio(int vet[], int tam)
 {
 	int num = random();
 	int i = 0;
-	while(i < sorteio.size())
+	while(i < tam)
 	{
-		if(sorteio[i] == num)
+		if(vet[i] == num)
 		{
 			num = random();
 			i = 0;
 			continue;
 		}
-		else if(sorteio[i] == 0)
+		else if(vet[i] == 0)
 		{
-			sorteio[i] = num;
+			vet[i] = num;
 			i = 0;
 			num = random();
 		}
@@ -95,24 +90,41 @@ void gerarSorteio(vector<int> &sorteio)
 			i++;
 		}
 	}
-	sort(sorteio.begin(), sorteio.end());
+	BubbleSort(vet, tam);
 }
 
-void gerarJogo(vector<int> &jogo)
+void gerarJogo(int vet[], int tam)
 {
-	for(int i = 0; i < jogo.size(); i++)
+	for(int i = 0; i < tam; i++)
 	{
 		cout << "\nDigite o " << i + 1 << "º número: ";
 		int num;
 		cin >> num;
-		jogo[i] = num;
+		vet[i] = num;
 	}
-	sort(jogo.begin(), jogo.end());
+	BubbleSort(vet, tam);
 }
 
-void exibir(vector<int> &jogo)
+void BubbleSort(int vet[], int tam)
 {
-	for(int i = 0; i < jogo.size(); i++)
-		cout << internal << setw(2) << setfill('0') << jogo[i] << " ";
-	
+	int aux;
+	for(int i = 0; i < tam; ++i)
+	{
+		for(int j = i + 1; j < tam; ++j)
+		{
+			if(vet[i] > vet[j])
+			{
+				aux = vet[i];
+				vet[i] = vet[j];
+				vet[j] = aux;
+			}
+		}
+	}
+}
+
+void exibir(int vet[], int tam)
+{
+	for(int i = 0; i < tam; i++)
+		cout << internal << setw(2) << setfill('0') << vet[i] << " ";
+
 }

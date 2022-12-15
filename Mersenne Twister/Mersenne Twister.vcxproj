@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5bb9ad80-746a-4273-abcb-8c4c2a3f8496}</ProjectGuid>
+    <ProjectGuid>{733dd8eb-0e23-4ef6-9ee9-618f2e39d999}</ProjectGuid>
     <RootNamespace>MersenneTwister</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Prog01.cpp" />
+    <ClCompile Include="Mersenne Twister.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

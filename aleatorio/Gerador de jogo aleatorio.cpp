@@ -11,12 +11,14 @@ void MostrarJogo(int[], int);
 
 int main()
 {
-	cout << "Criando um jogo da Mega Sena...\n\n";
 	int vet[TamVet] = {};
 	
+
+
+	/*cout << "Criando um jogo da Mega Sena...\n\n";
 	Mega(vet, TamVet);
 	BubbleSort(vet, TamVet);
-	MostrarJogo(vet, TamVet);
+	MostrarJogo(vet, TamVet);*/
 
 	system("pause");
 	return 0;
